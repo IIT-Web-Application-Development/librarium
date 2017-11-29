@@ -21,3 +21,9 @@ app.get('/', function(request, response) {
 	var query = url_parts.query;
   	response.render('pages/index.html');
 });
+
+app.get('/checkout', function(request, response) {
+	var url_parts = url.parse(request.url, true);
+	var query = url_parts.query;
+  	response.render('pages/checkout.html');
+});
