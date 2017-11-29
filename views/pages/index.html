@@ -7,8 +7,18 @@
 	<link rel="stylesheet" href="librarium.css">
 </head>
 <body>
-	<h1 align="center">Librarium Test Code</h1>
-
+	<div class="container">
+		<div class="container-fluid content-holder">
+			<h1 align="center">Librarium Test Code</h1>
+			<div id="rentButton" class="paddingRight50">
+				<button id="checkoutSelected" type="button" class="btn btn-primary rentButtonAlign" disabled>Checkout Selected</button>
+			</div>
+			<div id="reviewContent" class="marginTop100">
+				<h3 id="bookTitle" align="center"></h3>
+				<div id="listOfReviews"></div>
+			</div>
+		</div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	<script src="librarium.js"></script>
