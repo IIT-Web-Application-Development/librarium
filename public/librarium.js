@@ -1,10 +1,17 @@
 var count = 0;
 
+var onClickFunctions = function(){
+	$(".review").unbind().click(function(){
+
+	});
+}
+
 var initialDataLoad = function(){
 	isDataAvailable();
 	setTimeout(function(){ 
 		if(count == 0){
 			createDbData();
+			createReviewData();
 		}
 	}, 500);
 }
@@ -36,6 +43,19 @@ var createDbData = function(subjectValue){
    	}
 }
 
+var createReviewData = function(){
+	var db;
+	var request = openDBForReview();
+	request.onsuccess = function(e) {
+		var objectStore = getObjectStoreForReview(db,e);
+		var preLoadedReviewerData = [{"bookName":"Ender's Game", "reviews":[{"userName":"vikas","reviewComment":"This is a very nice book, but should have been little shorter.","timestamp":"2017-11-29 T 10:45"},{"userName":"Aury","reviewComment":"It is a great book!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"The Time Machine", "reviews":[{"userName":"dhara","reviewComment":"This is a very nice book, it is also a great thriller.","timestamp":"2017-11-29 T 10:45"},{"userName":"Aury","reviewComment":"It is a great book to enjoy from!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"Particle Physiscs", "reviews":[{"userName":"vikas","reviewComment":"This is a wonderful physics book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"dhara","reviewComment":"It is a great book to have for reference!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"The Elegant Universe", "reviews":[{"userName":"Aury","reviewComment":"This is a wonderful cosmics book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"vikas","reviewComment":"It is a great book to have for reference!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"The Great Gatsby", "reviews":[{"userName":"vikas","reviewComment":"This is a wonderful drama book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"dhara","reviewComment":"It is a great book to have for fun!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"The Hobbit", "reviews":[{"userName":"vikas","reviewComment":"This is a wonderful drama book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"aury","reviewComment":"It is a great book to have for fun!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"House of Leaves", "reviews":[{"userName":"aury","reviewComment":"This is a wonderful horror book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"dhara","reviewComment":"It is a great book to have for fun!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"How Not to Die", "reviews":[{"userName":"dhara","reviewComment":"This is a wonderful health book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"aury","reviewComment":"It is a great book to have health!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"The 4-Hour Body", "reviews":[{"userName":"vikas","reviewComment":"This is a wonderful health book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"aury","reviewComment":"It is a great book to have health!","timestamp":"2017-11-29 T 11:45"}]},{"bookName":"The Sugar Swap Diet", "reviews":[{"userName":"vikas","reviewComment":"This is a wonderful health book, any novice user can understand this.","timestamp":"2017-11-29 T 10:45"},{"userName":"aury","reviewComment":"It is a great book to have health!","timestamp":"2017-11-29 T 11:45"}]}];
+		for (i = 0; i < preLoadedReviewerData.length; i++) { 
+	        objectStore.put(preLoadedReviewerData[i]);
+	    } 
+   	}
+}
+
+
 var openDB = function(){
 	var request = indexedDB.open("ITMD462-562-Project-UserDB", 1);
 	request.onupgradeneeded = function(e){
@@ -47,9 +67,26 @@ var openDB = function(){
 	return request;
 }
 
+var openDBForReview = function(){
+	var request = indexedDB.open("ITMD462-562-Project-reviewDB", 1);
+	request.onupgradeneeded = function(e){
+		var thisDb = e.target.result;
+		if(! thisDb.objectStoreNames.contains("ITMD462-562-Project-reviewDB")){
+			thisDb.createObjectStore("ITMD462-562-Project-reviewDB",{autoIncrement:true});
+		}
+	}
+	return request;
+}
+
 var getObjectStore = function(db,e){
 	db = e.target.result;
 	var objectStore = db.transaction(["ITMD462-562-Project-UserDB"], 'readwrite').objectStore("ITMD462-562-Project-UserDB");
+	return objectStore;
+}
+
+var getObjectStoreForReview = function(db,e){
+	db = e.target.result;
+	var objectStore = db.transaction(["ITMD462-562-Project-reviewDB"], 'readwrite').objectStore("ITMD462-562-Project-reviewDB");
 	return objectStore;
 }
 
@@ -57,4 +94,5 @@ var getObjectStore = function(db,e){
 
 $(document).ready(function(){
 	initialDataLoad();
+	onClickFunctions();
 });
