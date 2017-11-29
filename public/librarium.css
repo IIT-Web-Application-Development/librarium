@@ -26,3 +26,9 @@
 .marginTop100{
 	margin-top: 100px;
 }
+
+.checkoutHR{
+	margin-left: 820px !important;
+    margin-top: -10px !important;
+    border-top: 1px solid black !important;
+}
