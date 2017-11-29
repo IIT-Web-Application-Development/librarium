@@ -1,1 +1,28 @@
+.content-holder{
+	box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+	background-color: mintcream;
+}
 
+.boxshadow{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.15);
+}
+
+.resultsDivCreation{
+	border: 1.4px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.paddingRight50{
+	padding-right: 50px;
+}
+
+.rentButtonAlign{
+	margin: 10px;
+    float: right;
+}
+
+.marginTop100{
+	margin-top: 100px;
+}
