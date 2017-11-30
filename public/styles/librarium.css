@@ -50,6 +50,11 @@
     padding-bottom: 20px;
 }
 
+.recentOrdersButton{
+	float:right;
+	padding:10px;
+}
+
 .libraryImage{
 	width: 40%;
     margin-left: 330px;
