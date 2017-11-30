@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<title>ITMD 462/562 - Team2 Project</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="styles/librarium.css">
 </head>
 <body>
@@ -46,7 +47,6 @@
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>S.No</th>
 								<th>Book Name</th>
 								<th>Author</th>
 								<th>ISBN</th>
@@ -61,6 +61,16 @@
 						</tbody>
 					</table>
 				</div>
+				<p>Select Date of Rent: <input type = "text" id = "datepicker" placeholder="MM/DD/YYYY"></p>
+ 				<div id="memberSelect">
+ 					<span>Are You a Member?</span><br>		
+ 					<label class="radio-inline">
+					  <input type="radio" name="memberRadioName" id="memberTrue" value="true"> Yes
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="memberRadioName" id="memberFlase" value="false" checked="true"> No
+					</label>		
+ 				</div>
 				<div id="rentButton">
 					<button id="checkoutSelected" type="button" class="btn btn-primary rentButtonAlign" disabled>Checkout Selected</button>
 				</div>
@@ -73,6 +83,12 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+ 	<script>
+ 	  $(function(){
+ 	    $("#datepicker").datepicker({ minDate: 0 });
+ 	  });
+ 	</script>
 	<script src="scripts/librarium.js"></script>
 	
 </body>
