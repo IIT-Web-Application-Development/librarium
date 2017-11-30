@@ -19,7 +19,13 @@ http.createServer(app).listen(app.get('port'), function() {
 app.get('/', function(request, response) {
 	var url_parts = url.parse(request.url, true);
 	var query = url_parts.query;
-  	response.render('pages/index.html');
+  	response.render('pages/launch.html');
+});
+
+app.get('/checkout', function(request, response) {
+	var url_parts = url.parse(request.url, true);
+	var query = url_parts.query;
+  	response.render('pages/checkout.html');
 });
 
 app.get('/checkout', function(request, response) {

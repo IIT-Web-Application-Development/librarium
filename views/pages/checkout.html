@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ITMD 462/562 - Team2 Project</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles/librarium.css">
+</head>
+<body>
+	<div class="container">
+		<div class="container-fluid content-holder">
+			<div class="row mainHeading margin5">
+				<div class="col-xs-9">
+					<h2 class="paddingLeft280">Librarium Website</h2>
+				</div>
+				<div class="col-xs-3">
+					<img src="images/booksLogo.png" class="mainImage" alt="logoDisplay">
+				</div>
+			</div>
+			<h1 align="center">Checkout Books</h1>
+			<table id="categorizedTable" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>S.No</th>
+						<th>Book Name</th>
+						<th>Author</th>
+						<th>ISBN</th>
+						<th>Original Cost</th>
+						<th>Member Cost</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody id="checkoutTbody">
+				</tbody>
+			</table>
+			<hr width="12%" class="checkoutHR"/>
+			<div id="rentButton" class="paddingRight50">
+				<button id="rent" type="button" class="btn btn-primary rentButtonAlign">Rent</button>
+			</div>
+			<div id="reviewContent" class="marginTop100">
+				<h3 id="bookTitle" align="center"></h3>
+				<div id="listOfReviews"></div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script src="scripts/librariumCheckout.js"></script>
+	
+</body>
+</html>
