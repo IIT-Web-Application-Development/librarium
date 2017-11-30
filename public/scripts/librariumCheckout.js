@@ -49,7 +49,7 @@ var createTableRowsForCheckout = function(index,cursor){
 	var td2 = $("<td id='author"+index+"'>"+cursor.value.booksData[index].author+"</td>"); 
 	var td3 = $("<td id='isbn"+index+"'>"+cursor.value.booksData[index].isbn+"</td>"); 
 	var td4 = $("<td id='originalcost"+index+"'>"+cursor.value.booksData[index].cost+"</td>"); 
-	var td5 = $("<td id='memberCost"+index+"'>"+cursor.value.booksData[xindex].membershipCost+"</td>"); 
+	var td5 = $("<td id='memberCost"+index+"'>"+cursor.value.booksData[index].membershipCost+"</td>"); 
 	var td6 = $("<td id='trash"+index+"'><button class='btn btn-secondary trashButton'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button></td>"); 
 	var trClose = $("</tr>");
 	$("#checkoutTbody").append(trOpen.append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(trClose));
