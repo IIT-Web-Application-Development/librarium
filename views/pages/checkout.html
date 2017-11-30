@@ -34,10 +34,11 @@
 			</table>
 			<hr width="12%" class="checkoutHR"/>
 			<div>
-				<span id="costOfBooks"></span>
+				<span id="costOfBooks" class="paddingLeft790"></span>
 			</div>
 			<div>
 				<span id="dateOfRental"></span>
+				<span id="memberTrueOrFlase" class="hide"></span>
 			</div>
 			<div id="rentButton" class="paddingRight50">
 				<button id="rent" type="button" class="btn btn-primary rentButtonAlign">Rent</button>
@@ -48,6 +49,27 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="confirmRent" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="marginLeft250">
+		      		<img width="50px" src="images/checkMark.png">
+		      	</div>
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue">Thank you for Renting at the Librarium Website, Please visit the librarium and pay for it to collect the books!</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeConfirm" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+  		
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	<script src="scripts/librariumCheckout.js"></script>
