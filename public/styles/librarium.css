@@ -61,8 +61,16 @@
     margin-bottom: 30px;
 }
 
+.textAlignCentre{
+	text-align: center;
+}
+
+.marginLeft250{
+	margin-left: 250px;
+}
+
 .checkoutHR{
-	margin-left: 795px !important;
+	margin-left: 745px !important;
     margin-top: -10px !important;
     border-top: 1px solid black !important;
 }
@@ -70,6 +78,10 @@
 .mainImage{
 	width: 40%;
     padding: 10px;
+}
+
+.paddingLeft790{
+	padding-left: 790px;
 }
 
 .mainHeading{
