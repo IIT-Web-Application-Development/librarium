@@ -4,13 +4,42 @@
 	<meta charset="utf-8" />
 	<title>ITMD 562 - vkasu - Heroku Deploy</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="librarium.css">
 </head>
 <body>
-	<h1 align="center">Librarium Test Code</h1>
-
+	<div class="container">
+		<div class="container-fluid content-holder">
+			<h1 align="center">Librarium Test Code</h1>
+			<div id="list-wrapper"></div>
+			<br>
+				<p>Enter Date: <input type = "text" id = "datepicker"></p>
+			
+			<div id="memberSelect">
+			
+					Are You a Member? <br>
+					
+					<input type="radio" name="member" id="yes"> Yes</input><br>
+					<input type="radio" name="member" id="no" checked="checked"> No</input>
+				
+			</div>
+			<div id="rentButton" class="paddingRight50" style="text-align: center;">
+				<button id="checkoutSelected" type="button" class="btn btn-primary rentButtonAlign" disabled> Rent Selected</button>
+			</div>
+			<div id="reviewContent" class="marginTop100">
+				<h3 id="bookTitle" align="center"></h3>
+				<div id="listOfReviews"></div>
+			</div>
+		</div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+	<script>
+	  $( function() {
+	    $( "#datepicker" ).datepicker();
+	  } );
+	</script>
 	<script src="librarium.js"></script>
 	
 </body>
