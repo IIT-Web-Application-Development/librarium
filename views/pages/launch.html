@@ -31,7 +31,7 @@
 						<option value="Health">Health</option>
 					</select>
 				</div>
-				<div class="searchCategoryButton">
+				<div class="searchCategoryButton" class="recentOrdersButton">
 					<button id="searchCategory" class="btn btn-primary" type="button">Search Category</button>
 				</div>
 				<div>
@@ -39,6 +39,9 @@
 				</div>
 			</div>
 			<div id="categorizedContent" class="hide">
+				<div id="viewAllOrders" class="recentOrdersButton">
+					<button id="orders" class="btn btn-primary">Recent Orders</button>
+				</div>
 				<div>
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -58,7 +61,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="rentButton" class="paddingRight50">
+				<div id="rentButton">
 					<button id="checkoutSelected" type="button" class="btn btn-primary rentButtonAlign" disabled>Checkout Selected</button>
 				</div>
 				<div id="reviewContent" class="marginTop100">
