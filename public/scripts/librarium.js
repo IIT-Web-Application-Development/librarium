@@ -70,9 +70,15 @@ var initialDataLoad = function(){
 		if(count == 0){
 			createDbData();
 		}else{
-			updateCheckoutStatusToDefault();
+			deleteDbData();
+			setTimeout(function(){ 
+				createDbData();
+				setTimeout(function(){ 
+					updateCheckoutStatusToDefault();
+				}, 200);
+			}, 200);
 		}
-	}, 500);
+	}, 300);
 }
 
 var isDataAvailable = function(){
@@ -99,6 +105,15 @@ var createDbData = function(subjectValue){
 		for (i = 0; i < preLoadedUserData.length; i++) { 
 	        objectStore.put(preLoadedUserData[i]);
 	    } 
+   	}
+}
+
+var deleteDbData = function(subjectValue){
+	var db;
+	var request = openDB();
+	request.onsuccess = function(e) {
+		var objectStore = getObjectStore(db,e);
+		objectStore.clear();
    	}
 }
 
