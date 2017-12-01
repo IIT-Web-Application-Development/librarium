@@ -152,5 +152,5 @@ $(document).ready(function(){
 	openDBToCreateTable();
 	setTimeout(function(){ 
 		setRentalDatesAndStrikeFields();
-	}, 200);
+	}, 500);
 });
