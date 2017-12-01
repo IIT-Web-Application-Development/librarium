@@ -11,14 +11,17 @@ var onClickFunctions = function(){
 
 	$("#checkoutSelected").unbind().click(function(){
 		if(!$("#datepicker").val() == ""){
+			$("#waitModal").modal({backdrop: 'static',keyboard: false});
 			var checked = radioSelectedEach();
 			for(var i=0; i<checked[1].length; i++){
 				updateCheckoutStatus(checked[1][i]);
 			}
 			setTimeout(function(){ 
+				$("#waitModal").modal("hide");
 				window.location.href="http://"+location.hostname+":"+location.port+"/checkout";
 			}, 1000);
 		}else{
+
 			$("#confirmRentDateSelection").modal({backdrop: 'static',keyboard: false});
 		}
 	});
@@ -277,7 +280,11 @@ var addRentalDetailsToDb = function(bookName){
 	var member = $('input[name=memberRadioName]:checked', '#memberSelect').val();
 
 $(document).ready(function(){
+	$("#waitModal").modal({backdrop: 'static',keyboard: false});
 	initialDataLoad();
-	onClickFunctions();
-	onChangeFunctions();
+	setTimeout(function(){ 
+		onClickFunctions();
+		onChangeFunctions();
+		$("#waitModal").modal("hide");
+	}, 1000);
 });
