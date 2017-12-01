@@ -61,7 +61,7 @@
 		      		<img width="50px" src="images/checkMark.png">
 		      	</div>
 		      	<div class="textAlignCentre">
-		      		  <span id="contentValue">Thank you for Renting at the Librarium Website, Please visit the librarium and pay for it to collect the books!</span>
+		      		  <span id="contentValueRent"></span>
 		   		</div>
 		      </div>
 		      <div class="modal-footer">
@@ -69,7 +69,23 @@
 		        </div>
 		    </div>
   		</div>
-  		
+  	</div>
+
+  		<div id="waitModalCheckout" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		      	<div class="marginLeft250">
+		      		<img width="50px" src="images/throbber.gif">
+		      	</div>
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValueLoader">Please Wait...</span>
+		   		</div>
+		      </div>
+		    </div>
+  		</div>
+	</div>
+
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	<script src="scripts/librariumCheckout.js"></script>
