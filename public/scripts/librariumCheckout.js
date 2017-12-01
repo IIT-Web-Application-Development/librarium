@@ -1,4 +1,5 @@
 var count = 0;
+var rentalDate = "";
 
 var dynamicClicks = function(){	
 	$(".trashButton").unbind().click(function(){
@@ -23,6 +24,7 @@ var normalOnClick = function(){
 			bookNameArray[i] = bookNameToReduce;
 		}
 		updateAvailableBooks(bookNameArray,rowCount);
+		$("#contentValueRent").text("Thank you for Renting at the Librarium Website, Please visit the librarium on "+rentalDate+" and pay for it to collect the books!")
 		$("#confirmRent").modal({backdrop: 'static',keyboard: false});
 	});
 
@@ -148,6 +150,7 @@ var setRentalDatesAndStrikeFields = function(){
    		 	var cursor = event.target.result;
    		 	if(cursor){
    		 		$("#dateOfRental").text("Date of Rental :"+cursor.value.date);
+   		 		rentalDate = cursor.value.date;
    		 		$("#memberTrueOrFlase").text(cursor.value.member);
    		 		$("#costOfBooks").text("$ "+calculateCostOfBooks());
    		 		var rowCount =	$("#checkoutTbody").children().length;
@@ -186,12 +189,14 @@ var calculateCostOfBooks = function(){
 }
 
 $(document).ready(function(){
+	$("#waitModalCheckout").modal({backdrop: 'static',keyboard: false});
 	normalOnClick();
 	initialDataLoad();
 	setTimeout(function(){ 
 		openDBToCreateTable();
 		setTimeout(function(){ 
 			setRentalDatesAndStrikeFields();
+			$("#waitModalCheckout").modal("hide");
 		}, 300);
 	}, 300);
 });
