@@ -5,8 +5,30 @@ var onClickFunctions = function(){
 		$("#listOfReviews").empty();
 		var currentBookId = $(this).parent().parent().children().eq(0).attr("id");
 		var bookName = $("#"+currentBookId).text();
-		$("#bookTitle").text('Reviews for "'+bookName+'" Book');
+		$("#bookTitle").text("Reviews for '"+bookName+"' Book");
 		getReviewData(bookName);
+	});
+
+	$("#addReview").unbind().click(function(){
+		$("#addExternalReview").removeClass("hide");
+		$("#addReview").prop("disabled",true);
+	});
+
+	$("#commitReview").unbind().click(function(){
+		if($("#authorNameInput").val() == "" || $("#autorReviewInput").val() == ""){
+			$("#blankSelectionModel").modal({backdrop: 'static',keyboard: false});
+		}else{
+			$("#addExternalReview").addClass("hide");
+			$("#addReview").prop("disabled",false);
+			var bookName = $("#addReview").parent().parent().children().eq(0).text().substring(13).substring(0,$("#addReview").parent().parent().children().eq(0).text().substring(13).indexOf("'"));
+			var author = $("#authorNameInput").val();
+			var review = $("#autorReviewInput").val();
+			var timeStamp = currentTimeStamp();
+			var reviewArray = [{"userName":author,"reviewComment":review,"timestamp":timeStamp}];
+			updateReviews(bookName,reviewArray);
+			$("#authorNameInput").val("");
+			$("#autorReviewInput").val("");
+		}
 	});
 
 	$("#checkoutSelected").unbind().click(function(){
@@ -21,7 +43,6 @@ var onClickFunctions = function(){
 				window.location.href="http://"+location.hostname+":"+location.port+"/checkout";
 			}, 1000);
 		}else{
-
 			$("#confirmRentDateSelection").modal({backdrop: 'static',keyboard: false});
 		}
 	});
@@ -31,17 +52,22 @@ var onClickFunctions = function(){
 	});
 
 	$("#searchCategory").unbind().click(function(){
-		var category = $(".selectOptions").val();
-		$("#MainPageLook").addClass("hide");
-		openDBToCreateTable(category);
-		$("#categorizedContent").removeClass("hide");
-		setTimeout(function(){ 
-			onClickFunctions();
-			onChangeFunctions();
-		}, 300);
+		if($(".selectOptions").val() == ""){
+			$("#searchCategoryFaultModel").modal({backdrop: 'static',keyboard: false});
+		}else{
+			var category = $(".selectOptions").val();
+			$("#MainPageLook").addClass("hide");
+			openDBToCreateTable(category);
+			$("#categorizedContent").removeClass("hide");
+			setTimeout(function(){ 
+				onClickFunctions();
+				onChangeFunctions();
+			}, 300);
+		}
 	});
 
 	$("#orders").unbind().click(function(){
+		$("#orderContentModal").empty();
 		$("#ordersModal").modal({backdrop: 'static',keyboard: false});
 		showPreviousOrders();
 	});
@@ -49,6 +75,14 @@ var onClickFunctions = function(){
 	$("#closeOrderData").unbind().click(function(){
 		$("#ordersModal").modal("hide");
 	});
+
+	$("#closeBlankSelectionModel").unbind().click(function(){
+		$("#closeBlankSelectionModel").modal("hide");
+	});
+
+	$("#closeFaultSearchModel").unbind().click(function(){
+		$("#searchCategoryFaultModel").modal("hide");
+	});	
 }
 
 var onChangeFunctions = function(){
@@ -78,6 +112,12 @@ var radioSelectedEach = function(){
 		});
 	var arrayOfCheckCount = [checked,bookNameArray];
 	return arrayOfCheckCount;
+}
+
+var currentTimeStamp = function(){
+	var date = new Date();
+    var dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    return dateString;
 }
 
 var initialDataLoad = function(){
@@ -195,8 +235,11 @@ var getReviewData = function(bookName){
    		 	if(cursor){
    		 		for(var i=0; i<10; i++){
 	   		 		if(bookName === cursor.value.booksData[i].bookName){
-	   		 			for(var j=0; j<2; j++){
+	   		 			for(var j=0; j<cursor.value.booksData[i].reviews.length; j++){
 	   		 				createNewDivForReview(i,j,cursor);
+	   		 			}
+	   		 			if($("#reviewContent").hasClass("hide")){
+	   		 				$("#reviewContent").removeClass("hide");
 	   		 			}
 	   		 		}
    		 		}
@@ -296,6 +339,28 @@ var showPreviousOrders = function(){
    		 			createOrdersTable(i,orderArray,cursor);
    		 		}
    		 	}
+   		}
+   	}
+}
+
+var updateReviews = function(checkedBook, reviewArray){
+	var db;
+	var request = openDB();
+	request.onsuccess = function(e) {
+		var objectStore = getObjectStore(db,e);
+	    objectStore.openCursor().onsuccess = function(event) {
+   		 	var cursor = event.target.result;
+   		 	if(cursor){
+   		 		for(var i=0; i<10; i++){
+   		 			if(cursor.value.booksData[i].bookName == checkedBook){
+   		 				var reviews = cursor.value.booksData[i].reviews;
+   		 				cursor.value.booksData[i].reviews = reviews.concat(reviewArray);
+						cursor.update(cursor.value);
+			 		} 
+   		 		} 
+   		 		$("#listOfReviews").empty();
+   		 		getReviewData(checkedBook); 		 	
+			}
    		}
    	}
 }
