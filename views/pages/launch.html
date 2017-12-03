@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ITMD 462/562 - Team2 Project</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="styles/librarium.css">
+</head>
+<body>
+	<div class="container">
+		<div class="container-fluid content-holder">
+			<div class="row mainHeading margin5">
+				<div class="col-xs-9">
+					<h2 class="paddingLeft280">Librarium Website</h2>
+				</div>
+				<div class="col-xs-3">
+					<img src="images/booksLogo.png" class="mainImage" alt="logoDisplay">
+				</div>
+			</div>
+			<div id="MainPageLook">
+				<div>
+					<h3 class="marginLeft8" align="center">Welcome To The BookStore!</h3>
+				</div>
+				<div>
+					<select class="selectOptions">
+						<option value="">Choose A Category</option>
+						<option value="scienceFiction">scienceFiction</option>
+						<option value="science">science</option>
+						<option value="novel">novel</option>
+						<option value="Horror">Horror</option>
+						<option value="Health">Health</option>
+					</select>
+				</div>
+				<div class="searchCategoryButton" class="recentOrdersButton">
+					<button id="searchCategory" class="btn btn-primary" type="button">Search Category</button>
+				</div>
+				<div>
+					<img src="images/library.jpg" alt="library image shown here" class="libraryImage">
+				</div>
+			</div>
+			<div id="categorizedContent" class="hide">
+				<div id="viewAllOrders" class="recentOrdersButton">
+					<button id="orders" class="btn btn-primary">Recent Orders</button>
+				</div>
+				<div>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Book Name</th>
+								<th>Author</th>
+								<th>ISBN</th>
+								<th>Original Cost</th>
+								<th>Member Cost</th>
+								<th>AvailableBooks</th>
+								<th>Review</th>
+								<th>Select</th>
+							</tr>
+						</thead>
+						<tbody id="mainCategorizedTbody">
+						</tbody>
+					</table>
+				</div>
+				<p>Select Date of Rent: <input type = "text" id = "datepicker" placeholder="MM/DD/YYYY"></p>
+ 				<div id="memberSelect">
+ 					<span>Are You a Member?</span><br>		
+ 					<label class="radio-inline">
+					  <input type="radio" name="memberRadioName" id="memberTrue" value="true"> Yes
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="memberRadioName" id="memberFlase" value="false" checked="true"> No
+					</label>		
+ 				</div>
+				<div id="rentButton">
+					<button id="checkoutSelected" type="button" class="btn btn-primary rentButtonAlign" disabled>Checkout Selected</button>
+				</div>
+				<div id="reviewContent" class="marginTop100 hide">
+					<h3 id="bookTitle" align="center"></h3>
+					<div class="addOrderButton">
+						<button id="addReview" class="btn btn-default">Add Review</button>
+					</div>
+					<div id="addExternalReview" class="hide">
+						 <div class="form-group">
+						    <label for="authorNameInput">Author Name</label>
+						    <input type="email" class="form-control" id="authorNameInput" placeholder="Author Name">
+						  </div>
+						  <div class="form-group">
+						    <label for="autorReviewInput">Review</label>
+						    <textArea type="text" class="form-control" id="autorReviewInput" placeholder="Review Comments"></textArea>
+						  </div>
+						  <div class="saveButton floatLeft">
+						 	 <button id="commitReview" class="btn btn-primary">Save</button>
+						  </div>
+					</div>
+					<div id="listOfReviews" class="clearBoth"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="confirmRentDateSelection" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>  Please select a date to rent the books selected.</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeConfirm" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+	</div>
+
+	<div id="blankSelectionModel" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>  Please give your name and review.</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeBlankSelectionModel" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+	</div>
+
+	<div id="searchCategoryFaultModel" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>  Please Choose a Valid Search Category.</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeFaultSearchModel" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+	</div>
+
+
+	<div id="waitModal" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		      	<div class="marginLeft250">
+		      		<img width="50px" src="images/throbber.gif">
+		      	</div>
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue">Please Wait...</span>
+		   		</div>
+		      </div>
+		    </div>
+  		</div>
+	</div>
+
+	<div id="ordersModal" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		    	<div class="modal-header">
+		    		<label><h3>Recent Orders</h3></label>
+		        	<button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		     	 </div>
+		      	<div class="modal-body">
+		      		<div id="orderContentModal">
+		   			</div>
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button id="closeOrderData" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+ 	<script>
+ 	  $(function(){
+ 	    $("#datepicker").datepicker({ minDate: 0 });
+ 	  });
+ 	</script>
+	<script src="scripts/librarium.js"></script>
+	
+</body>
+</html>
