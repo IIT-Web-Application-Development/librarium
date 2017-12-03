@@ -74,9 +74,25 @@
 				<div id="rentButton">
 					<button id="checkoutSelected" type="button" class="btn btn-primary rentButtonAlign" disabled>Checkout Selected</button>
 				</div>
-				<div id="reviewContent" class="marginTop100">
+				<div id="reviewContent" class="marginTop100 hide">
 					<h3 id="bookTitle" align="center"></h3>
-					<div id="listOfReviews"></div>
+					<div class="addOrderButton">
+						<button id="addReview" class="btn btn-default">Add Review</button>
+					</div>
+					<div id="addExternalReview" class="hide">
+						 <div class="form-group">
+						    <label for="authorNameInput">Author Name</label>
+						    <input type="email" class="form-control" id="authorNameInput" placeholder="Author Name">
+						  </div>
+						  <div class="form-group">
+						    <label for="autorReviewInput">Review</label>
+						    <textArea type="text" class="form-control" id="autorReviewInput" placeholder="Review Comments"></textArea>
+						  </div>
+						  <div class="saveButton floatLeft">
+						 	 <button id="commitReview" class="btn btn-primary">Save</button>
+						  </div>
+					</div>
+					<div id="listOfReviews" class="clearBoth"></div>
 				</div>
 			</div>
 		</div>
@@ -95,6 +111,42 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button id="closeConfirm" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+	</div>
+
+	<div id="blankSelectionModel" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>  Please give your name and review.</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeBlankSelectionModel" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+	</div>
+
+	<div id="searchCategoryFaultModel" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="textAlignCentre">
+		      		  <span id="contentValue"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>  Please Choose a Valid Search Category.</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeFaultSearchModel" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
 		        </div>
 		    </div>
   		</div>
