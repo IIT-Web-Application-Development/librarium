@@ -88,3 +88,23 @@
 	background-color: antiquewhite;
     text-align: center;
 }
+
+.addOrderButton{
+	float: right;
+    margin-Top: -45px;
+    padding-right: 10px;
+
+}
+
+.floatLeft{
+	float:left;
+}
+
+.clearBoth{
+	clear:both;
+}
+
+.saveButton{
+	padding: 10px;
+    margin-left: 1032px;
+}
