@@ -443,7 +443,7 @@ var getObjectStore2 = function(db,e){
 
 var createNewDivForReview = function(indexi,indexj,cursor){
 	var div = $("<div id="+indexi+" class='resultsDivCreation boxshadow'>");
-	var firstLabel = $("<label id=authorNameLabel"+indexi+">Author Name  <span id='authorName"+indexi+"'>: "+cursor.value.booksData[indexi].reviews[indexj].userName+"</span></label><br/>");
+	var firstLabel = $("<label id=authorNameLabel"+indexi+">Reviewer Name  <span id='authorName"+indexi+"'>: "+cursor.value.booksData[indexi].reviews[indexj].userName+"</span></label><br/>");
 	var secondLabel = $("<label id=reviewCommentLabel"+indexi+">Review  <span id='reviewMessage"+indexi+"'>: "+cursor.value.booksData[indexi].reviews[indexj].reviewComment+"</span></label><br/>");
 	var thirdLabel = $("<label id=timestampLabel"+indexi+">Updated Timestamp  <span id='spanTS"+indexi+"'>: "+cursor.value.booksData[indexi].reviews[indexj].timestamp+"</span></label><br/>");
 	var closeDiv = $("</div>");
