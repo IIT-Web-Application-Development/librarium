@@ -18,6 +18,10 @@
 	padding-right: 50px;
 }
 
+.paddingLeft20{
+	padding-left:20px;
+}
+
 .rentButtonAlign{
 	margin: 10px;
     float: right;
@@ -27,8 +31,21 @@
 	margin:5px;
 }
 
+.marginTop20{
+	margin-top: 20px;
+}
+
+.paddingTopBottom10{
+	padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .marginLeft8{
 	margin-left: 8px;
+}
+
+.displayInLine{
+	display: inline;
 }
 
 .paddingLeft280{
@@ -92,19 +109,23 @@
 .addOrderButton{
 	float: right;
     margin-Top: -45px;
-    padding-right: 10px;
-
 }
 
-.floatLeft{
-	float:left;
+.totalBalance{
+	font-weight: bolder;
 }
 
-.clearBoth{
-	clear:both;
+.bookRentCost{
+	color: gray;
+	font-weight: bolder;
+	background-color: #dddddd;
 }
 
-.saveButton{
+.remainingBalance{
+	font-size: 20px;
+	border: groove;
+}
+
+.paddingTop10{
 	padding: 10px;
-    margin-left: 1032px;
 }
