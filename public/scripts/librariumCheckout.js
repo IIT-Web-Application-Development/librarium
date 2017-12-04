@@ -44,7 +44,7 @@ var normalOnClick = function(){
 		var rentCost = $("#bookRentCost").val();
 		var totalBal = $("#totalBalance").val();
 		var remainingBal = $("#remainingBalance");
-		if(totalBal =='' || totalBal > rentCost){
+		if(totalBal ==''){
 			$("#invalidModel").modal({backdrop: 'static',keyboard: false});
 		}
 		else{
