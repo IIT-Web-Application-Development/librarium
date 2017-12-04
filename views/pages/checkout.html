@@ -46,6 +46,20 @@
 			<div id="reviewContent" class="marginTop100">
 				<h3 id="bookTitle" align="center"></h3>
 				<div id="listOfReviews"></div>
+			</div>			
+			<div id="calculateCost" class="paddingTop10">
+				<div>
+					<span class="margin5">Would you like to calculate your remaining Balance?</span>
+				</div>
+				<span>
+					$ <input class="totalBalance" id="totalBalance" type="number" placeholder="Cash on Hand"> 
+					 $ <input class="bookRentCost" type="number" id="bookRentCost" disabled>
+					<div class="paddingLeft20 displayInLine">
+						<button id="calculateBudget" class="btn btn-default">Calculate remaining Balance</button>
+					</div>
+				</span>
+				<br>
+				<div class="remainingBalance hide marginTop20 paddingTopBottom10" id="remainingBalance"></div>
 			</div>
 		</div>
 	</div>
@@ -85,6 +99,24 @@
 		    </div>
   		</div>
 	</div>
+
+	<div id="invalidModel" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button id="closeSymbol" type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="textAlignCentre">
+		      		  <span >Please enter valid value....</span>
+		   		</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="closeInValidModal" type="button" class="btn btn-link" data-dismiss="modal">Ok</button>
+		        </div>
+		    </div>
+  		</div>
+  	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
