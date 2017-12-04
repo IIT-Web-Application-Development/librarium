@@ -83,6 +83,13 @@ var onClickFunctions = function(){
 	$("#closeFaultSearchModel").unbind().click(function(){
 		$("#searchCategoryFaultModel").modal("hide");
 	});	
+
+	$("#cancelCommitReview").unbind().click(function(){
+		$("#authorNameInput").val("");
+		$("#autorReviewInput").val("");
+		$("#addReview").prop("disabled",false);
+		$("#addExternalReview").addClass("hide");
+	});
 }
 
 var onChangeFunctions = function(){
