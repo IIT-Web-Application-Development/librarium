@@ -38,6 +38,24 @@ var normalOnClick = function(){
 		$("#confirmRent").modal("hide");
 		window.location.href = "http://"+location.hostname+":"+location.port+"/";
 	});
+
+	$("#calculateBudget").unbind().click(function(){
+		var rentCost = $("#bookRentCost").val();
+		var totalBal = $("#totalBalance").val();
+		var remainingBal = $("#remainingBalance");
+		if(totalBal =='' || totalBal > rentCost){
+			$("#invalidModel").modal({backdrop: 'static',keyboard: false});
+		}
+		else{
+			$("#remainingBalance").removeClass("hide");
+		 	$("#remainingBalance").text("Your remaining balance is: $" + (totalBal - Number(rentCost)));
+		}
+			
+	});
+
+	$("#closeInValidModal").unbind().click(function(){
+		$("#closeInValidModal").modal("hide");
+	});
 }
 
 var createRentBooksArray = function(rowCount){
@@ -192,6 +210,7 @@ var calculateCostOfBooks = function(){
 	 var countArray = [];
 	 var price = 0;
 	 var rowCount =	$("#checkoutTbody").children().length;
+	 var cost = document.getElementById("bookRentCost");
 	 for(var i=0; i<rowCount; i++){
 	 	if($("#memberTrueOrFlase").text() == "true"){
 	 		var originalCostWithDollar = $("#checkoutTbody").children().eq(i).children().eq(4).text();
@@ -203,6 +222,7 @@ var calculateCostOfBooks = function(){
 	 for(var i=0; i<countArray.length; i++){
 	 	price = price + parseInt(countArray[i]);
 	 }
+	 cost.value =price;
 	 return price;
 }
 
